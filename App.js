@@ -9,12 +9,13 @@ import { Constants } from 'expo'
 import History from './components/History'
 import AddEntry from './components/AddEntry'
 import EntryDetail from './components/EntryDetail'
+import Live from './components/Live'
 import { purple, white } from './utils/colors'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 
 const UdaciStatusBar = ({ backgroundColor, ...props }) => {
   return (
-    <View style={{backgroundColor, height: Constants.statusBarHeight}}>
+    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
       <StatusBar translucent backcrounColor={backgroundColor} {...props} />
     </View>
   )
@@ -32,6 +33,13 @@ const RouteConfig = {
     navigationOptions: {
       tabBarLabel: 'AddEntry',
       tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />
+    }
+  },
+  Live: {
+    screen: Live,
+    navigationOptions: {
+      tabBarLabel: 'Live',
+      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-speedometer' size={30} color={tintColor} />
     }
   }
 }
@@ -83,7 +91,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={createStore(reducer)}>
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
           <UdaciStatusBar backgroundColor={purple} barStyle='light-content' />
           <MainNavigator />
         </View>
